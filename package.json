@@ -1,0 +1,29 @@
+{
+  "name": "cherry-pick-tool",
+  "version": "0.0.1",
+  "description": "Git Cherry Pick Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DefinityLabs/cherry-pick-tool.git"
+  },
+  "keywords": [
+    "git",
+    "cherry-pick"
+  ],
+  "author": "Definity Labs",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/DefinityLabs/cherry-pick-tool/issues"
+  },
+  "homepage": "https://github.com/DefinityLabs/cherry-pick-tool#readme",
+  "dependencies": {
+    "clear": "0.0.1",
+    "colors": "^1.1.2",
+    "gitlog": "^2.4.0",
+    "keypress": "^0.2.1"
+  }
+}
