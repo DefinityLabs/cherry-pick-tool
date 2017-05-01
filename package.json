@@ -24,6 +24,8 @@
     "clear": "0.0.1",
     "colors": "^1.1.2",
     "gitlog": "^2.4.0",
-    "keypress": "^0.2.1"
+    "keypress": "^0.2.1",
+    "moment": "^2.18.1",
+    "node-emoji": "^1.5.1"
   }
 }
