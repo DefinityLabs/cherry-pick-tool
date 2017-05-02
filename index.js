@@ -2,6 +2,8 @@ const keypress = require('keypress');
 const clear = require('clear');
 const emoji = require('node-emoji');
 
+const extra = require('./lib/extra');
+
 const git = require('./lib/git');
 const commands = require('./lib/commands/commands');
 const quit = require('./lib/commands/quit');
@@ -18,21 +20,18 @@ const displayCurrentCommitBody = require('./lib/commands/displayCurrentCommitBod
 const displayCherryPickFile = require('./lib/commands/displayCherryPickFile');
 const addCommitToCherryPickFile = require('./lib/commands/addCommitToCherryPickFile');
 const removeCommitFromCherryPickFile = require('./lib/commands/removeCommitFromCherryPickFile');
+const loadCherryPickFile = require('./lib/commands/loadCherryPickFile');
 const writeCherryPickFile = require('./lib/commands/writeCherryPickFile');
 const clearCherryPickFile = require('./lib/commands/clearCherryPickFile');
-
-const extra = {};
 
 let args = process.argv;
 
 for (let i = 2; i < args.length; i++) {
   let arg = args[i];
   if (arg === '--before') {
-    options.before = args[++i];
-    extra.before = options.before;
+    extra.param("before", args[++i]);
   } else if (arg === '--after') {
-    options.after = args[++i];
-    extra.after = options.after;
+    extra.param("after", args[++i]);
   }
 }
 
@@ -60,13 +59,14 @@ commands.add(displayCurrentCommitBody);
 commands.add(displayCherryPickFile);
 commands.add(addCommitToCherryPickFile);
 commands.add(removeCommitFromCherryPickFile);
+commands.add(loadCherryPickFile);
 commands.add(writeCherryPickFile);
 commands.add(clearCherryPickFile);
 commands.add(quit);
 
 function executeKeyPressEvent(ch, key) {
   if (key && key.ctrl && key.name == 'c') {
-    console.log(emoji.get('reversed_hand_with_middle_finger_extended') + '  next time use '.red + 'q'.yellow + ' to exit or '.red + '?'.yellow + ' to help!'.red);
+    console.log(emoji.get('middle_finger') + '  next time use '.red + 'q'.yellow + ' to exit or '.red + '?'.yellow + ' to help!'.red);
     console.log('');
     process.stdin.pause();
   }
