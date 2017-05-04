@@ -5,7 +5,7 @@ const emoji = require('node-emoji');
 const extra = require('./lib/extra');
 
 const git = require('./lib/git');
-const commands = require('./lib/commands/commands');
+const profile = require('./lib/commands/commandsProfile');
 const quit = require('./lib/commands/quit');
 const help = require('./lib/commands/help');
 const clearConsole = require('./lib/commands/clearConsole');
@@ -22,7 +22,12 @@ const addCommitToCherryPickFile = require('./lib/commands/addCommitToCherryPickF
 const removeCommitFromCherryPickFile = require('./lib/commands/removeCommitFromCherryPickFile');
 const loadCherryPickFile = require('./lib/commands/loadCherryPickFile');
 const writeCherryPickFile = require('./lib/commands/writeCherryPickFile');
+const executeCherryPick = require('./lib/commands/executeCherryPick');
 const clearCherryPickFile = require('./lib/commands/clearCherryPickFile');
+const abortCherryPick = require('./lib/commands/abortCherryPick');
+const continueCherryPick = require('./lib/commands/continueCherryPick');
+const quitCherryPick = require('./lib/commands/quitCherryPick');
+const gitStatus = require('./lib/commands/gitStatus');
 
 let args = process.argv;
 
@@ -46,23 +51,35 @@ process.stdin.resume();
 
 clear();
 
-commands.add(help);
-commands.add(clearConsole);
-commands.add(appendEmptyLineInConsole);
-commands.add(displayOptions);
-commands.add(moveToNext);
-commands.add(moveToPrevious);
-commands.add(moveToFirst);
-commands.add(displayCurrentCommit);
-commands.add(displayCurrentCommitFiles);
-commands.add(displayCurrentCommitBody);
-commands.add(displayCherryPickFile);
-commands.add(addCommitToCherryPickFile);
-commands.add(removeCommitFromCherryPickFile);
-commands.add(loadCherryPickFile);
-commands.add(writeCherryPickFile);
-commands.add(clearCherryPickFile);
-commands.add(quit);
+const defaultCommands = profile.get('default');
+defaultCommands.add(help);
+defaultCommands.add(clearConsole);
+defaultCommands.add(appendEmptyLineInConsole);
+defaultCommands.add(displayOptions);
+defaultCommands.add(moveToNext);
+defaultCommands.add(moveToPrevious);
+defaultCommands.add(moveToFirst);
+defaultCommands.add(displayCurrentCommit);
+defaultCommands.add(displayCurrentCommitFiles);
+defaultCommands.add(displayCurrentCommitBody);
+defaultCommands.add(displayCherryPickFile);
+defaultCommands.add(addCommitToCherryPickFile);
+defaultCommands.add(removeCommitFromCherryPickFile);
+defaultCommands.add(loadCherryPickFile);
+defaultCommands.add(writeCherryPickFile);
+defaultCommands.add(clearCherryPickFile);
+defaultCommands.add(executeCherryPick);
+defaultCommands.add(quit);
+
+const cherryPickCommands = profile.get('cherryPick');
+cherryPickCommands.add(help);
+cherryPickCommands.add(appendEmptyLineInConsole);
+cherryPickCommands.add(gitStatus);
+cherryPickCommands.add(abortCherryPick);
+cherryPickCommands.add(continueCherryPick);
+cherryPickCommands.add(quitCherryPick);
+
+profile.define('default');
 
 function executeKeyPressEvent(ch, key) {
   if (key && key.ctrl && key.name == 'c') {
@@ -71,7 +88,7 @@ function executeKeyPressEvent(ch, key) {
     process.stdin.pause();
   }
 
-  commands.forEach(function(command){
+  profile.current().forEach(function(command){
     if (command.canProcess(ch, key)) {
       command.execute();
     }
