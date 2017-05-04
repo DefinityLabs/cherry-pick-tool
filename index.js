@@ -28,6 +28,8 @@ const abortCherryPick = require('./lib/commands/abortCherryPick');
 const continueCherryPick = require('./lib/commands/continueCherryPick');
 const quitCherryPick = require('./lib/commands/quitCherryPick');
 const gitStatus = require('./lib/commands/gitStatus');
+const gitCommitAllowEmpty = require('./lib/commands/gitCommitAllowEmpty');
+const gitReset = require('./lib/commands/gitReset');
 
 let args = process.argv;
 
@@ -74,10 +76,12 @@ defaultCommands.add(quit);
 const cherryPickCommands = profile.get('cherryPick');
 cherryPickCommands.add(help);
 cherryPickCommands.add(appendEmptyLineInConsole);
-cherryPickCommands.add(gitStatus);
 cherryPickCommands.add(abortCherryPick);
 cherryPickCommands.add(continueCherryPick);
 cherryPickCommands.add(quitCherryPick);
+cherryPickCommands.add(gitStatus);
+cherryPickCommands.add(gitCommitAllowEmpty);
+cherryPickCommands.add(gitReset);
 
 profile.define('default');
 
@@ -94,6 +98,12 @@ function executeKeyPressEvent(ch, key) {
     }
   });
 }
+
+console.log(emoji.get('cherries') + '  Welcome to the Cherry Pick Tool!');
+console.log('');
+console.log('If you need help, press ' + 'h'.yellow + ' or ' + '?'.yellow + ' anytime.');
+console.log('');
+console.log('');
 
 git.load(function(){
   moveToNext.execute();
