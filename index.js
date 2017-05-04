@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const keypress = require('keypress');
 const clear = require('clear');
 const emoji = require('node-emoji');
