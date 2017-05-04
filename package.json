@@ -1,8 +1,9 @@
 {
   "name": "cherry-pick-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Git Cherry Pick Tool",
   "main": "index.js",
+  "preferGlobal": "true",
   "scripts": {
     "test": "jest"
   },
