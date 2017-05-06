@@ -2,10 +2,10 @@
 
 const keypress = require('keypress');
 const clear = require('clear');
-const emoji = require('node-emoji');
 
+const out = require('./lib/output');
 const extra = require('./lib/extra');
-
+const emoji = require('./lib/emoji');
 const git = require('./lib/git');
 const profile = require('./lib/commands/commandsProfile');
 const quit = require('./lib/commands/quit');
@@ -34,15 +34,7 @@ const gitCommitAllowEmpty = require('./lib/commands/gitCommitAllowEmpty');
 const gitReset = require('./lib/commands/gitReset');
 
 let args = process.argv;
-
-for (let i = 2; i < args.length; i++) {
-  let arg = args[i];
-  if (arg === '--before') {
-    extra.param("before", args[++i]);
-  } else if (arg === '--after') {
-    extra.param("after", args[++i]);
-  }
-}
+extra.load(args);
 
 keypress(process.stdin);
 
@@ -50,7 +42,9 @@ process.stdin.on('keypress', function(ch, key) {
   executeKeyPressEvent(ch, key);
 });
 
-process.stdin.setRawMode(true);
+if (process.stdin.isTTY) {
+  process.stdin.setRawMode(true);
+}
 process.stdin.resume();
 
 clear();
@@ -89,8 +83,9 @@ profile.define('default');
 
 function executeKeyPressEvent(ch, key) {
   if (key && key.ctrl && key.name == 'c') {
-    console.log(emoji.get('middle_finger') + '  next time use '.red + 'q'.yellow + ' to exit or '.red + '?'.yellow + ' to help!'.red);
-    console.log('');
+    out.println(emoji.get('middle_finger'), 'next time use'.red, 'q'.yellow,
+      'to exit or'.red, '?'.yellow, 'to help!'.red);
+    out.println();
     process.stdin.pause();
   }
 
@@ -101,11 +96,11 @@ function executeKeyPressEvent(ch, key) {
   });
 }
 
-console.log(emoji.get('cherries') + '  Welcome to the Cherry Pick Tool!');
-console.log('');
-console.log('If you need help, press ' + 'h'.yellow + ' or ' + '?'.yellow + ' anytime.');
-console.log('');
-console.log('');
+out.println(emoji.get('cherries'), 'Welcome to the Cherry Pick Tool!');
+out.println();
+out.println('If you need help, press', 'h'.yellow, 'or', '?'.yellow, 'anytime.');
+out.println();
+out.println();
 
 git.load(function(){
   moveToNext.execute();
