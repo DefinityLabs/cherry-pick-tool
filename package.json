@@ -8,7 +8,9 @@
     "cherry-pick-tool": "index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -31,5 +33,9 @@
     "keypress": "^0.2.1",
     "moment": "^2.18.1",
     "node-emoji": "^1.5.1"
+  },
+  "devDependencies": {
+    "coveralls": "^2.13.1",
+    "jest": "^19.0.2"
   }
 }
