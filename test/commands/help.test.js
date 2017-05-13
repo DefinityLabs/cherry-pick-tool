@@ -86,16 +86,17 @@ describe('help', () => {
         });
 
         it('prints help message', () => {
-          expect(out.println).toHaveBeenCalledWith('thinking_face', 'Commands:');
+          expect(out.println.mock.calls[0][0]).toEqual('thinking_face');
+          expect(out.println.mock.calls[0][1]).toEqual('Commands:');
         });
 
         it('prints help message', () => {
-          let text = '             t'.yellow + ' this is the description';
-          expect(out.println).toHaveBeenCalledWith(text);
+          let text = '  ' + '           t'.yellow + '  this is the description';
+          expect(out.println.mock.calls[1][0]).toEqual(text);
         });
 
         it('prints an empty line', () => {
-          expect(out.println).toHaveBeenCalledWith();
+          expect(out.println.mock.calls[2].length).toEqual(0);
         });
       });
     });
