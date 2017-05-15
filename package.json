@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.13.1",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "moment-timezone": "^0.5.13"
   }
 }
