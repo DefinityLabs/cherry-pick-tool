@@ -28,7 +28,7 @@ describe('help', () => {
   describe('execute', () => {
     describe('when there is no current profile', () => {
       beforeEach(() => {
-        emoji.get = jest.fn((name) => name);
+        emoji.get = jest.fn(name => name);
         out.println = jest.fn();
         profile.current = jest.fn().mockReturnValue(undefined);
 
@@ -51,7 +51,7 @@ describe('help', () => {
         beforeEach(() => {
           currentProfile = [{}];
 
-          emoji.get = jest.fn((name) => name);
+          emoji.get = jest.fn(name => name);
           out.println = jest.fn();
           profile.current = jest.fn().mockReturnValue(currentProfile);
 
@@ -71,14 +71,16 @@ describe('help', () => {
         let currentProfile;
 
         beforeEach(() => {
-          currentProfile = [{
-            help: {
-              keys: 't',
-              description: 'this is the description'
+          currentProfile = [
+            {
+              help: {
+                keys: 't',
+                description: 'this is the description'
+              }
             }
-          }];
+          ];
 
-          emoji.get = jest.fn((name) => name);
+          emoji.get = jest.fn(name => name);
           out.println = jest.fn();
           profile.current = jest.fn().mockReturnValue(currentProfile);
 

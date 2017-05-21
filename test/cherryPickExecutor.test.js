@@ -11,11 +11,15 @@ describe('cherryPickExecutor', () => {
     { method: 'abort', args: [], command: 'git cherry-pick --abort' },
     { method: 'quit', args: [], command: 'git cherry-pick --quit' },
     { method: 'status', args: [], command: 'git status' },
-    { method: 'commitAllowEmpty', args: ['commit msg'], command: 'git commit --allow-empty -m "commit msg"' },
+    {
+      method: 'commitAllowEmpty',
+      args: ['commit msg'],
+      command: 'git commit --allow-empty -m "commit msg"'
+    },
     { method: 'reset', args: [], command: 'git reset' }
   ];
 
-  testCases.forEach((testCase) => {
+  testCases.forEach(testCase => {
     let callback;
 
     describe(`when ${testCase.method} is called`, () => {

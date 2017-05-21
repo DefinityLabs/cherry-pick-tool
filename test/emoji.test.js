@@ -24,7 +24,7 @@ describe('emoji', () => {
   describe('when emoji is not enabled', () => {
     beforeEach(() => {
       extra.params = jest.fn();
-      extra.params.mockReturnValue({noEmoji: true});
+      extra.params.mockReturnValue({ noEmoji: true });
     });
 
     describe('get a smile emoji', () => {

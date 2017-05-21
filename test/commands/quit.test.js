@@ -24,7 +24,7 @@ describe('quit', () => {
 
   describe('execute', () => {
     beforeEach(() => {
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
       process.stdin.pause = jest.fn();
 

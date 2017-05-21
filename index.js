@@ -83,13 +83,19 @@ profile.define('default');
 
 function executeKeyPressEvent(ch, key) {
   if (key && key.ctrl && key.name == 'c') {
-    out.println(emoji.get('middle_finger'), 'next time use'.red, 'q'.yellow,
-      'to exit or'.red, '?'.yellow, 'to help!'.red);
+    out.println(
+      emoji.get('middle_finger'),
+      'next time use'.red,
+      'q'.yellow,
+      'to exit or'.red,
+      '?'.yellow,
+      'to help!'.red
+    );
     out.println();
     process.stdin.pause();
   }
 
-  profile.current().forEach(function(command){
+  profile.current().forEach(function(command) {
     if (command.canProcess(ch, key)) {
       command.execute();
     }
@@ -102,6 +108,6 @@ out.println('If you need help, press', 'h'.yellow, 'or', '?'.yellow, 'anytime.')
 out.println();
 out.println();
 
-git.load(function(){
+git.load(function() {
   moveToNext.execute();
 });

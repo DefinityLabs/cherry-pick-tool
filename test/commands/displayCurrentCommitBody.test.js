@@ -18,7 +18,9 @@ describe('displayCurrentCommitBody', () => {
       expect(displayCurrentCommitBody.help.keys).toEqual('b');
     });
     it('returns "Display the body of the current commit" as description', () => {
-      expect(displayCurrentCommitBody.help.description).toEqual('Display the body of the current commit');
+      expect(displayCurrentCommitBody.help.description).toEqual(
+        'Display the body of the current commit'
+      );
     });
   });
 
@@ -41,7 +43,10 @@ describe('displayCurrentCommitBody', () => {
     });
 
     it('prints the commit body', () => {
-      expect(out.println).toHaveBeenCalledWith('  ', 'This is the body of the commit\n  \n  - first line\n  - second line');
+      expect(out.println).toHaveBeenCalledWith(
+        '  ',
+        'This is the body of the commit\n  \n  - first line\n  - second line'
+      );
     });
   });
 });

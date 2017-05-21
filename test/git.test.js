@@ -11,16 +11,13 @@ const out = require('../lib/output');
 const defaultOptions = {
   repo: '.',
   number: 20,
-  fields: [
-    'hash', 'authorName', 'authorEmail', 'authorDate',
-    'authorDateRel', 'subject', 'body'
-  ]
+  fields: ['hash', 'authorName', 'authorEmail', 'authorDate', 'authorDateRel', 'subject', 'body']
 };
 
 describe('git', () => {
   beforeAll(() => {
     out.println = jest.fn();
-    emoji.get = jest.fn((name) => name);
+    emoji.get = jest.fn(name => name);
   });
 
   describe('with config params', () => {
@@ -122,8 +119,8 @@ describe('git', () => {
 
         beforeEach(() => {
           commitsLog = [
-            {hash: '40af9159', authorDate: '2017-01-21'},
-            {hash: '30af9158', authorDate: '2017-01-15'}
+            { hash: '40af9159', authorDate: '2017-01-21' },
+            { hash: '30af9158', authorDate: '2017-01-15' }
           ];
 
           gitlog.mockImplementation((opt, cb) => {
@@ -147,17 +144,14 @@ describe('git', () => {
       });
     });
 
-
-
-
     describe('with commits', () => {
       describe('load', () => {
         let loadCallback, commitsLog;
 
         beforeEach(() => {
           commitsLog = [
-            {hash: '40af9159', authorDate: '2017-01-21'},
-            {hash: '30af9158', authorDate: '2017-01-15'}
+            { hash: '40af9159', authorDate: '2017-01-21' },
+            { hash: '30af9158', authorDate: '2017-01-15' }
           ];
 
           config.params = jest.fn();
@@ -323,8 +317,8 @@ describe('git', () => {
 
                 beforeEach(() => {
                   olderCommitsLog = [
-                    {hash: '30af9158', authorDate: '2017-01-15'},
-                    {hash: '20af9157', authorDate: '2017-01-01'}
+                    { hash: '30af9158', authorDate: '2017-01-15' },
+                    { hash: '20af9157', authorDate: '2017-01-01' }
                   ];
 
                   gitlogCalled = 0;
@@ -412,8 +406,8 @@ describe('git', () => {
                   thirdNextCallback = jest.fn();
 
                   olderCommitsLog = [
-                    {hash: '40af9159', authorDate: '2017-01-21'},
-                    {hash: '30af9158', authorDate: '2017-01-15'}
+                    { hash: '40af9159', authorDate: '2017-01-21' },
+                    { hash: '30af9158', authorDate: '2017-01-15' }
                   ];
 
                   gitlogCalled = 0;

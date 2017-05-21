@@ -5,11 +5,11 @@ const out = require('../../lib/output');
 describe('appendEmptyLineInConsole', () => {
   describe('can process', () => {
     it('returns true when press "return" or "enter"', () => {
-      expect(appendEmptyLineInConsole.canProcess(undefined, {name: 'return'})).toBeTruthy();
-      expect(appendEmptyLineInConsole.canProcess(undefined, {name: 'enter'})).toBeTruthy();
+      expect(appendEmptyLineInConsole.canProcess(undefined, { name: 'return' })).toBeTruthy();
+      expect(appendEmptyLineInConsole.canProcess(undefined, { name: 'enter' })).toBeTruthy();
     });
     it('returns false when press any key different of "return" or "enter"', () => {
-      expect(appendEmptyLineInConsole.canProcess(undefined, {name: 'down'})).toBeFalsy();
+      expect(appendEmptyLineInConsole.canProcess(undefined, { name: 'down' })).toBeFalsy();
     });
   });
 
@@ -18,7 +18,9 @@ describe('appendEmptyLineInConsole', () => {
       expect(appendEmptyLineInConsole.help.keys).toEqual('<enter>');
     });
     it('returns "Append an empty line in the console" as description', () => {
-      expect(appendEmptyLineInConsole.help.description).toEqual('Append an empty line in the console');
+      expect(appendEmptyLineInConsole.help.description).toEqual(
+        'Append an empty line in the console'
+      );
     });
   });
 
@@ -30,7 +32,7 @@ describe('appendEmptyLineInConsole', () => {
     });
 
     it('prints an empty line', () => {
-      expect(out.println).toHaveBeenCalled();;
+      expect(out.println).toHaveBeenCalled();
     });
   });
 });

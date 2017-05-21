@@ -20,7 +20,9 @@ describe('displayCherryPickFile', () => {
       expect(displayCherryPickFile.help.keys).toEqual('v');
     });
     it('returns "Display the content of the cherry pick file" as description', () => {
-      expect(displayCherryPickFile.help.description).toEqual('Display the content of the cherry pick file');
+      expect(displayCherryPickFile.help.description).toEqual(
+        'Display the content of the cherry pick file'
+      );
     });
   });
 
@@ -36,13 +38,15 @@ describe('displayCherryPickFile', () => {
       beforeEach(() => {
         commits = [];
 
-      	cherryPick.commits = jest.fn().mockReturnValue(commits);
+        cherryPick.commits = jest.fn().mockReturnValue(commits);
 
         displayCherryPickFile.execute();
       });
 
       it('prints the begining of the file', () => {
-        expect(out.println.mock.calls[0][0]).toEqual('============ BEGIN OF CHERRY PICK FILE ============'.cyan);
+        expect(out.println.mock.calls[0][0]).toEqual(
+          '============ BEGIN OF CHERRY PICK FILE ============'.cyan
+        );
         expect(out.println.mock.calls[1][0]).toBeUndefined();
       });
 
@@ -52,24 +56,26 @@ describe('displayCherryPickFile', () => {
       });
 
       it('prints the ending of the file', () => {
-        expect(out.println.mock.calls[4][0]).toEqual('============= END OF CHERRY PICK FILE ============='.cyan);
+        expect(out.println.mock.calls[4][0]).toEqual(
+          '============= END OF CHERRY PICK FILE ============='.cyan
+        );
         expect(out.println.mock.calls[5][0]).toBeUndefined();
       });
     });
 
     describe('when file is not empty', () => {
       beforeEach(() => {
-        commits = [
-          {}, {}
-        ];
+        commits = [{}, {}];
 
-      	cherryPick.commits = jest.fn().mockReturnValue(commits);
+        cherryPick.commits = jest.fn().mockReturnValue(commits);
 
         displayCherryPickFile.execute();
       });
 
       it('prints the begining of the file', () => {
-        expect(out.println.mock.calls[0][0]).toEqual('============ BEGIN OF CHERRY PICK FILE ============'.cyan);
+        expect(out.println.mock.calls[0][0]).toEqual(
+          '============ BEGIN OF CHERRY PICK FILE ============'.cyan
+        );
         expect(out.println.mock.calls[1][0]).toBeUndefined();
       });
 
@@ -91,7 +97,9 @@ describe('displayCherryPickFile', () => {
       });
 
       it('prints the ending of the file', () => {
-        expect(out.println.mock.calls[2][0]).toEqual('============= END OF CHERRY PICK FILE ============='.cyan);
+        expect(out.println.mock.calls[2][0]).toEqual(
+          '============= END OF CHERRY PICK FILE ============='.cyan
+        );
         expect(out.println.mock.calls[3][0]).toBeUndefined();
       });
     });

@@ -17,7 +17,9 @@ describe('writeCherryPickFile', () => {
       expect(writeCherryPickFile.help.keys).toEqual('w');
     });
     it('returns "Save the cherry pick file as .cherrypick" as description', () => {
-      expect(writeCherryPickFile.help.description).toEqual('Save the cherry pick file as .cherrypick');
+      expect(writeCherryPickFile.help.description).toEqual(
+        'Save the cherry pick file as .cherrypick'
+      );
     });
   });
 
@@ -29,7 +31,7 @@ describe('writeCherryPickFile', () => {
     });
 
     it('calls cherryPick.writeFile', () => {
-      expect(cherryPick.writeFile).toHaveBeenCalled();;
+      expect(cherryPick.writeFile).toHaveBeenCalled();
     });
   });
 });

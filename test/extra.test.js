@@ -32,7 +32,7 @@ describe('extra', () => {
       });
 
       it('should create noEmoji param with value true', () => {
-        expect(extra.params()).toEqual({noEmoji: true});
+        expect(extra.params()).toEqual({ noEmoji: true });
       });
     });
   });
@@ -44,7 +44,7 @@ describe('extra', () => {
       });
 
       it('should create before param with value 2017-01-01', () => {
-        expect(extra.params()).toEqual({before: '2017-01-01'});
+        expect(extra.params()).toEqual({ before: '2017-01-01' });
       });
     });
   });
@@ -56,7 +56,7 @@ describe('extra', () => {
       });
 
       it('should create after param with value 2017-01-31', () => {
-        expect(extra.params()).toEqual({after: '2017-01-31'});
+        expect(extra.params()).toEqual({ after: '2017-01-31' });
       });
     });
   });

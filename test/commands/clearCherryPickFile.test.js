@@ -21,14 +21,15 @@ describe('clearCherryPickFile', () => {
       expect(clearCherryPickFile.help.keys).toEqual('#');
     });
     it('returns "Clear cherry pick file" as description', () => {
-      expect(clearCherryPickFile.help.description).toEqual('Clear cherry pick file '
-        + 'it doesn\'t save the file'.underline);
+      expect(clearCherryPickFile.help.description).toEqual(
+        'Clear cherry pick file ' + "it doesn't save the file".underline
+      );
     });
   });
 
   describe('execute', () => {
     beforeEach(() => {
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
       cherryPick.clear = jest.fn();
 

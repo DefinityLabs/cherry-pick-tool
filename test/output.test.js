@@ -16,7 +16,7 @@ describe('output', () => {
       });
 
       it('should call stdout.write with the text', () => {
-        expect(process.stdout.write).toBeCalledWith('text 01')
+        expect(process.stdout.write).toBeCalledWith('text 01');
       });
     });
 
@@ -30,7 +30,7 @@ describe('output', () => {
       });
 
       it('should call stdout.write with the text', () => {
-        expect(process.stdout.write).toBeCalledWith('text 01 text 02')
+        expect(process.stdout.write).toBeCalledWith('text 01 text 02');
       });
     });
 
@@ -44,7 +44,7 @@ describe('output', () => {
       });
 
       it('should call stdout.write with the text', () => {
-        expect(process.stdout.write).toBeCalledWith('text 01 text 02')
+        expect(process.stdout.write).toBeCalledWith('text 01 text 02');
       });
     });
   });
@@ -60,7 +60,7 @@ describe('output', () => {
       });
 
       it('should call stdout.write with the text', () => {
-        expect(process.stdout.write).toBeCalledWith('text 01\n')
+        expect(process.stdout.write).toBeCalledWith('text 01\n');
       });
     });
 
@@ -74,7 +74,7 @@ describe('output', () => {
       });
 
       it('should call stdout.write with the text', () => {
-        expect(process.stdout.write).toBeCalledWith('text 01 text 02\n')
+        expect(process.stdout.write).toBeCalledWith('text 01 text 02\n');
       });
     });
 
@@ -88,7 +88,7 @@ describe('output', () => {
       });
 
       it('should call stdout.write with the text', () => {
-        expect(process.stdout.write).toBeCalledWith('text 01 text 02\n')
+        expect(process.stdout.write).toBeCalledWith('text 01 text 02\n');
       });
     });
   });

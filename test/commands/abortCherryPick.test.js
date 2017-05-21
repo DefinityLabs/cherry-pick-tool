@@ -22,7 +22,9 @@ describe('abortCherryPick', () => {
       expect(abortCherryPick.help.keys).toEqual('a');
     });
     it('returns "Cancel the operation and return to the pre-sequence state" as description', () => {
-      expect(abortCherryPick.help.description).toEqual('Cancel the operation and return to the pre-sequence state');
+      expect(abortCherryPick.help.description).toEqual(
+        'Cancel the operation and return to the pre-sequence state'
+      );
     });
   });
 
@@ -30,7 +32,7 @@ describe('abortCherryPick', () => {
     let executor;
 
     beforeEach(() => {
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
       profile.define = jest.fn();
     });
@@ -38,7 +40,7 @@ describe('abortCherryPick', () => {
     describe('when there is error', () => {
       beforeEach(() => {
         executor = {
-          abort: jest.fn((cb) => cb('error'))
+          abort: jest.fn(cb => cb('error'))
         };
 
         cherryPick.executor = jest.fn().mockReturnValue(executor);
@@ -62,7 +64,7 @@ describe('abortCherryPick', () => {
     describe('when there is no error', () => {
       beforeEach(() => {
         executor = {
-          abort: jest.fn((cb) => cb())
+          abort: jest.fn(cb => cb())
         };
 
         cherryPick.executor = jest.fn().mockReturnValue(executor);

@@ -7,11 +7,11 @@ describe('moveToNext', () => {
   describe('can process', () => {
     it('returns true when press "n" or "down"', () => {
       expect(moveToNext.canProcess('n')).toBeTruthy();
-      expect(moveToNext.canProcess(undefined, {name: 'down'})).toBeTruthy();
+      expect(moveToNext.canProcess(undefined, { name: 'down' })).toBeTruthy();
     });
     it('returns false when press any key different of "n" and "down"', () => {
       expect(moveToNext.canProcess('x')).toBeFalsy();
-      expect(moveToNext.canProcess(undefined, {name: 'up'})).toBeFalsy();
+      expect(moveToNext.canProcess(undefined, { name: 'up' })).toBeFalsy();
     });
   });
 
@@ -31,14 +31,14 @@ describe('moveToNext', () => {
       commit = {};
       index = 1;
 
-      git.next = jest.fn((cb) => cb(commit, index));
+      git.next = jest.fn(cb => cb(commit, index));
       printer.commit = jest.fn();
 
       moveToNext.execute();
     });
 
     it('calls git next', () => {
-      expect(git.next).toHaveBeenCalled();;
+      expect(git.next).toHaveBeenCalled();
     });
 
     it('calls printer commit', () => {

@@ -23,7 +23,9 @@ describe('addCommitToCherryPickFile', () => {
       expect(addCommitToCherryPickFile.help.keys).toEqual('+ / a');
     });
     it('returns "Add the current commit to the cherry pick file" as description', () => {
-      expect(addCommitToCherryPickFile.help.description).toEqual('Add the current commit to the cherry pick file');
+      expect(addCommitToCherryPickFile.help.description).toEqual(
+        'Add the current commit to the cherry pick file'
+      );
     });
   });
 
@@ -35,7 +37,7 @@ describe('addCommitToCherryPickFile', () => {
         hash: '2a1c3b'
       };
 
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
       cherryPick.add = jest.fn();
       git.commit = jest.fn().mockReturnValue(commit);

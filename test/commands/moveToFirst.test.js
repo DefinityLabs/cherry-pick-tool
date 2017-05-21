@@ -29,14 +29,14 @@ describe('moveToFirst', () => {
       commit = {};
       index = 1;
 
-      git.first = jest.fn((cb) => cb(commit, index));
+      git.first = jest.fn(cb => cb(commit, index));
       printer.commit = jest.fn();
 
       moveToFirst.execute();
     });
 
     it('calls git first', () => {
-      expect(git.first).toHaveBeenCalled();;
+      expect(git.first).toHaveBeenCalled();
     });
 
     it('calls printer commit', () => {

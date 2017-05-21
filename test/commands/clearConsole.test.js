@@ -28,7 +28,7 @@ describe('clearConsole', () => {
 
   describe('execute', () => {
     beforeEach(() => {
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
 
       clearConsole.execute();

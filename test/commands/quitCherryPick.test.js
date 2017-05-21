@@ -22,9 +22,11 @@ describe('quitCherryPick', () => {
       expect(quitCherryPick.help.keys).toEqual('q');
     });
     it('returns the description as description', () => {
-      expect(quitCherryPick.help.description).toEqual('Forget about the current operation in progress. '
-                 + 'Can be used to clear the sequencer state after a failed '
-                 + 'cherry-pick or revert');
+      expect(quitCherryPick.help.description).toEqual(
+        'Forget about the current operation in progress. ' +
+          'Can be used to clear the sequencer state after a failed ' +
+          'cherry-pick or revert'
+      );
     });
   });
 
@@ -32,7 +34,7 @@ describe('quitCherryPick', () => {
     let executor, commits;
 
     beforeEach(() => {
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
       cherryPick.remove = jest.fn();
       profile.define = jest.fn();
@@ -41,10 +43,10 @@ describe('quitCherryPick', () => {
     describe('when there is an error', () => {
       beforeEach(() => {
         executor = {
-          quit: jest.fn((cb) => cb('error'))
+          quit: jest.fn(cb => cb('error'))
         };
 
-      	cherryPick.executor = jest.fn().mockReturnValue(executor);
+        cherryPick.executor = jest.fn().mockReturnValue(executor);
 
         quitCherryPick.execute();
       });
@@ -66,13 +68,13 @@ describe('quitCherryPick', () => {
       describe('there are no commits', () => {
         beforeEach(() => {
           executor = {
-            quit: jest.fn((cb) => cb())
+            quit: jest.fn(cb => cb())
           };
 
           commits = [];
 
           cherryPick.commits = jest.fn().mockReturnValue(commits);
-        	cherryPick.executor = jest.fn().mockReturnValue(executor);
+          cherryPick.executor = jest.fn().mockReturnValue(executor);
 
           quitCherryPick.execute();
         });
@@ -93,7 +95,7 @@ describe('quitCherryPick', () => {
       describe('there are commits', () => {
         beforeEach(() => {
           executor = {
-            quit: jest.fn((cb) => cb())
+            quit: jest.fn(cb => cb())
           };
 
           commits = [
@@ -103,7 +105,7 @@ describe('quitCherryPick', () => {
           ];
 
           cherryPick.commits = jest.fn().mockReturnValue(commits);
-        	cherryPick.executor = jest.fn().mockReturnValue(executor);
+          cherryPick.executor = jest.fn().mockReturnValue(executor);
 
           quitCherryPick.execute();
         });

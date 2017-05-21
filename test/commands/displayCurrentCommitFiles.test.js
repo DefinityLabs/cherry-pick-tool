@@ -18,7 +18,9 @@ describe('displayCurrentCommitFiles', () => {
       expect(displayCurrentCommitFiles.help.keys).toEqual('f');
     });
     it('returns "Display the files affected by the current commit" as description', () => {
-      expect(displayCurrentCommitFiles.help.description).toEqual('Display the files affected by the current commit');
+      expect(displayCurrentCommitFiles.help.description).toEqual(
+        'Display the files affected by the current commit'
+      );
     });
   });
 

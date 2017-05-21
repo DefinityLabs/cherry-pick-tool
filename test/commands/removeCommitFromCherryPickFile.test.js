@@ -21,7 +21,9 @@ describe('removeCommitFromCherryPickFile', () => {
       expect(removeCommitFromCherryPickFile.help.keys).toEqual('- / r');
     });
     it('returns "Remove the current commit from the cherry pick file" as description', () => {
-      expect(removeCommitFromCherryPickFile.help.description).toEqual('Remove the current commit from the cherry pick file');
+      expect(removeCommitFromCherryPickFile.help.description).toEqual(
+        'Remove the current commit from the cherry pick file'
+      );
     });
   });
 
@@ -33,7 +35,7 @@ describe('removeCommitFromCherryPickFile', () => {
         hash: '2ac19c7b'
       };
 
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
       git.commit = jest.fn().mockReturnValue(commit);
       cherryPick.remove = jest.fn();
@@ -47,7 +49,7 @@ describe('removeCommitFromCherryPickFile', () => {
       });
 
       it('not calls cherryPick.remove', () => {
-        expect(cherryPick.remove).not.toHaveBeenCalled();;
+        expect(cherryPick.remove).not.toHaveBeenCalled();
       });
 
       it('not prints any message', () => {
@@ -63,7 +65,7 @@ describe('removeCommitFromCherryPickFile', () => {
       });
 
       it('calls cherryPick.remove', () => {
-        expect(cherryPick.remove).toHaveBeenCalledWith(commit.hash);;
+        expect(cherryPick.remove).toHaveBeenCalledWith(commit.hash);
       });
 
       it('prints any message', () => {
@@ -72,7 +74,7 @@ describe('removeCommitFromCherryPickFile', () => {
       });
 
       it('prints an empty line', () => {
-        expect(out.println.mock.calls[1[0]]).toBeUndefined();
+        expect(out.println.mock.calls[(1)[0]]).toBeUndefined();
       });
     });
   });

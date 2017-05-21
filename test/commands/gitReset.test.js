@@ -28,12 +28,12 @@ describe('gitReset', () => {
   describe('execute', () => {
     describe('when there is error', () => {
       beforeEach(() => {
-        emoji.get = jest.fn((name) => name);
+        emoji.get = jest.fn(name => name);
         out.println = jest.fn();
         executeCherryPick.execute = jest.fn();
         cherryPick.remove = jest.fn();
         cherryPick.commits = jest.fn().mockReturnValue([]);
-        cherryPick.executor = jest.fn().mockReturnValue({reset: jest.fn((cb) => cb('error'))});
+        cherryPick.executor = jest.fn().mockReturnValue({ reset: jest.fn(cb => cb('error')) });
 
         gitReset.execute();
       });
@@ -57,12 +57,12 @@ describe('gitReset', () => {
 
     describe('when there are no commits', () => {
       beforeEach(() => {
-        emoji.get = jest.fn((name) => name);
+        emoji.get = jest.fn(name => name);
         out.println = jest.fn();
         executeCherryPick.execute = jest.fn();
         cherryPick.remove = jest.fn();
         cherryPick.commits = jest.fn().mockReturnValue([]);
-        cherryPick.executor = jest.fn().mockReturnValue({reset: jest.fn((cb) => cb())});
+        cherryPick.executor = jest.fn().mockReturnValue({ reset: jest.fn(cb => cb()) });
 
         gitReset.execute();
       });
@@ -88,16 +88,14 @@ describe('gitReset', () => {
       let commits;
 
       beforeEach(() => {
-        commits = [
-          {hash: '20a58c7b'}
-        ];
+        commits = [{ hash: '20a58c7b' }];
 
-        emoji.get = jest.fn((name) => name);
+        emoji.get = jest.fn(name => name);
         out.println = jest.fn();
         executeCherryPick.execute = jest.fn();
         cherryPick.remove = jest.fn();
         cherryPick.commits = jest.fn().mockReturnValue(commits);
-        cherryPick.executor = jest.fn().mockReturnValue({reset: jest.fn((cb) => cb())});
+        cherryPick.executor = jest.fn().mockReturnValue({ reset: jest.fn(cb => cb()) });
 
         gitReset.execute();
       });

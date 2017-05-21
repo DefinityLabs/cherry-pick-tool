@@ -24,7 +24,7 @@ describe('cherryPick', () => {
     };
 
     out.println = jest.fn();
-    emoji.get = jest.fn((name) => name);
+    emoji.get = jest.fn(name => name);
   });
 
   afterEach(() => {
@@ -52,7 +52,7 @@ describe('cherryPick', () => {
       let result;
 
       beforeEach(() => {
-      	result = cherryPick.add(firstCommit);
+        result = cherryPick.add(firstCommit);
       });
 
       it('returns true', () => {
@@ -71,7 +71,7 @@ describe('cherryPick', () => {
 
     describe('multiple commits in ascending order', () => {
       beforeEach(() => {
-      	cherryPick.add(firstCommit);
+        cherryPick.add(firstCommit);
         cherryPick.add(lastCommit);
       });
 
@@ -84,8 +84,8 @@ describe('cherryPick', () => {
 
     describe('multiple commits in descending order', () => {
       beforeEach(() => {
-      	cherryPick.add(lastCommit);
-      	cherryPick.add(firstCommit);
+        cherryPick.add(lastCommit);
+        cherryPick.add(firstCommit);
       });
 
       it('returns commits in ascending order', () => {
@@ -104,9 +104,9 @@ describe('cherryPick', () => {
           authorDate: firstCommit.authorDate
         };
 
-      	cherryPick.add(firstCommit);
-      	cherryPick.add(secondCommit);
-      	cherryPick.add(lastCommit);
+        cherryPick.add(firstCommit);
+        cherryPick.add(secondCommit);
+        cherryPick.add(lastCommit);
       });
 
       it('returns commits in ascending order', () => {
@@ -122,7 +122,7 @@ describe('cherryPick', () => {
 
       beforeEach(() => {
         cherryPick.add(lastCommit);
-      	cherryPick.add(firstCommit);
+        cherryPick.add(firstCommit);
         result = cherryPick.add(lastCommit);
       });
 
@@ -161,7 +161,7 @@ describe('cherryPick', () => {
 
     describe('non existing commit', () => {
       beforeEach(() => {
-      	result = cherryPick.remove(firstCommit.hash);
+        result = cherryPick.remove(firstCommit.hash);
       });
 
       it('returns false', () => {
@@ -173,7 +173,9 @@ describe('cherryPick', () => {
   describe('writeFile', () => {
     describe('when there are no error', () => {
       beforeEach(() => {
-        fs.writeFile = jest.fn((file, data, cb) => { cb(undefined) });
+        fs.writeFile = jest.fn((file, data, cb) => {
+          cb(undefined);
+        });
 
         cherryPick.add(firstCommit);
 
@@ -204,7 +206,9 @@ describe('cherryPick', () => {
 
     describe('when there is error', () => {
       beforeEach(() => {
-        fs.writeFile = jest.fn((file, data, cb) => { cb('error') });
+        fs.writeFile = jest.fn((file, data, cb) => {
+          cb('error');
+        });
 
         cherryPick.add(firstCommit);
 
@@ -225,7 +229,9 @@ describe('cherryPick', () => {
 
       it('prints successful message', () => {
         expect(out.println.mock.calls[0][0]).toEqual('shit');
-        expect(out.println.mock.calls[0][1]).toEqual('error writing .cherrypick file, check the privileges or if the file is already open'.red);
+        expect(out.println.mock.calls[0][1]).toEqual(
+          'error writing .cherrypick file, check the privileges or if the file is already open'.red
+        );
       });
 
       it('prints an empty line', () => {
@@ -237,7 +243,9 @@ describe('cherryPick', () => {
   describe('load', () => {
     describe('when there is error to access the file', () => {
       beforeEach(() => {
-      	fs.access = jest.fn((file, cb) => { cb('error') });
+        fs.access = jest.fn((file, cb) => {
+          cb('error');
+        });
 
         cherryPick.load();
       });
@@ -252,14 +260,18 @@ describe('cherryPick', () => {
       });
 
       it('prints an empty line', () => {
-        expect(out.println.mock.calls[1[0]]).toBeUndefined();
+        expect(out.println.mock.calls[(1)[0]]).toBeUndefined();
       });
     });
 
     describe('when there is error to read the file', () => {
       beforeEach(() => {
-      	fs.access = jest.fn((file, cb) => { cb() });
-        fs.readFile = jest.fn((file, cb) => { cb('error') });
+        fs.access = jest.fn((file, cb) => {
+          cb();
+        });
+        fs.readFile = jest.fn((file, cb) => {
+          cb('error');
+        });
 
         cherryPick.load();
       });
@@ -270,22 +282,27 @@ describe('cherryPick', () => {
 
       it('prints message "error reading .cherrypick file, check the privileges or if the file is already open"', () => {
         expect(out.println.mock.calls[0][0]).toEqual('shit');
-        expect(out.println.mock.calls[0][1])
-          .toEqual('error reading .cherrypick file, check the privileges or if the file is already open'.red);
+        expect(out.println.mock.calls[0][1]).toEqual(
+          'error reading .cherrypick file, check the privileges or if the file is already open'.red
+        );
       });
 
       it('prints an empty line', () => {
-        expect(out.println.mock.calls[1[0]]).toBeUndefined();
+        expect(out.println.mock.calls[(1)[0]]).toBeUndefined();
       });
     });
 
     describe('when there are no errors', () => {
       beforeEach(() => {
-        let file = { };
+        let file = {};
         file[firstCommit.hash] = firstCommit;
 
-        fs.access = jest.fn((file, cb) => { cb() });
-        fs.readFile = jest.fn((file, cb) => { cb( undefined, JSON.stringify(file) ) });
+        fs.access = jest.fn((file, cb) => {
+          cb();
+        });
+        fs.readFile = jest.fn((file, cb) => {
+          cb(undefined, JSON.stringify(file));
+        });
 
         cherryPick.load();
       });
@@ -296,12 +313,11 @@ describe('cherryPick', () => {
 
       it('prints message "cherry pick file was loaded!!!"', () => {
         expect(out.println.mock.calls[0][0]).toEqual('thumbsup');
-        expect(out.println.mock.calls[0][1])
-          .toEqual('cherry pick file was loaded!!!'.cyan);
+        expect(out.println.mock.calls[0][1]).toEqual('cherry pick file was loaded!!!'.cyan);
       });
 
       it('prints an empty line', () => {
-        expect(out.println.mock.calls[1[0]]).toBeUndefined();
+        expect(out.println.mock.calls[(1)[0]]).toBeUndefined();
       });
     });
   });

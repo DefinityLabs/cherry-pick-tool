@@ -17,11 +17,11 @@ describe('clone', () => {
     let cloned;
 
     beforeEach(() => {
-      cloned = clone({name: "John"});
+      cloned = clone({ name: 'John' });
     });
 
     it('should return undefined', () => {
-      expect(cloned).toEqual({name: "John"});
+      expect(cloned).toEqual({ name: 'John' });
     });
   });
 });

@@ -35,7 +35,7 @@ describe('gitCommitAllowEmpty', () => {
         hash: '1a2c23e'
       };
 
-      emoji.get = jest.fn((name) => name);
+      emoji.get = jest.fn(name => name);
       out.println = jest.fn();
     });
 
@@ -57,7 +57,7 @@ describe('gitCommitAllowEmpty', () => {
       });
 
       it('not calls cherryPick.remove', () => {
-        expect(cherryPick.remove).not.toHaveBeenCalled();;
+        expect(cherryPick.remove).not.toHaveBeenCalled();
       });
 
       it('not prints any message', () => {

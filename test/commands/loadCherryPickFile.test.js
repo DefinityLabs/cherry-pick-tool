@@ -29,7 +29,7 @@ describe('loadCherryPickFile', () => {
     });
 
     it('calls cherryPick load', () => {
-      expect(cherryPick.load).toHaveBeenCalled();;
+      expect(cherryPick.load).toHaveBeenCalled();
     });
   });
 });
