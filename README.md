@@ -20,6 +20,24 @@ git add .gitignore
 git commit -m "Add .cherrypick to the .gitignore"
 ```
 
+## Execute
+
+```bash
+cherry-pick-tool
+```
+
+You don't like emojis? or maybe if you are using Windows, you can just hide them:
+
+```bash
+cherry-pick-tool --no-emoji
+```
+
+Are you looking for a specific period?
+
+```bash
+cherry-pick-tool --before 2015-04-09 09:39:23 +0100 --after 2015-03-01
+```
+
 ## Commands
 
 ### Help
