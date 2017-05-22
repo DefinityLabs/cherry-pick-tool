@@ -1,4 +1,5 @@
-# cherry-pick-tool
+# 🍒 cherry-pick-tool
+
 Cherry pick is not a common practice, but sometimes we cannot avoid it. It's a painful process, first filtering the commits you want to cherry pick and them executing the merging with the current code.
 
 This tool was created to make this process painless. Using it you can easily navigate between the commits and add the ones you want to the cherrypick file, it doesn't matter the order, we'll sort them for you.
