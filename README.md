@@ -1,5 +1,9 @@
 # cherry-pick-tool
-Git Cherry Pick tool
+Cherry pick is not a common practice, but sometimes we cannot avoid it. It's a painful process, first filtering the commits you want to cherry pick and them executing the merging with the current code.
+
+This tool was created to make this process painless. Using it you can easily navigate between the commits and add the ones you want to the cherrypick file, it doesn't matter the order, we'll sort them for you.
+
+After you have all your commits into the cherrypick file, you can just execute it. If you don't want execute, you can save the file and do it later.
 
 ## Installation
 
@@ -7,7 +11,7 @@ Git Cherry Pick tool
 npm install -g cherry-pick-tool
 ```
 
-## Add the .cherrypick file to the .gitignore
+### Add the .cherrypick file to the .gitignore
 
 ```bash
 echo '.cherrypick' >> .gitignore
@@ -15,7 +19,9 @@ git add .gitignore
 git commit -m "Add .cherrypick to the .gitignore"
 ```
 
-## Help
+## Commands
+
+### Help
 
 ```
 🤔  Commands:
@@ -38,3 +44,4 @@ git commit -m "Add .cherrypick to the .gitignore"
              x  Execute cherry pick
              q  Exit the application
 ```
+
