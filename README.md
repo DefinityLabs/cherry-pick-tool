@@ -21,12 +21,13 @@ git commit -m "Add .cherrypick to the .gitignore"
 ```
 
 ## Execute
+Just execute it in your git project directory:
 
 ```bash
 cherry-pick-tool
 ```
 
-You don't like emojis? or maybe if you are using Windows, you can just hide them:
+You don't like emoji? or maybe if you are using Windows, you can just hide them:
 
 ```bash
 cherry-pick-tool --no-emoji
