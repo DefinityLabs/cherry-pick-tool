@@ -46,14 +46,16 @@ describe('help', () => {
 
     describe('when there is current profile', () => {
       describe('when there is no help', () => {
-        let currentProfile;
+        let currentProfileCommands;
 
         beforeEach(() => {
-          currentProfile = [{}];
+          currentProfileCommands = [{}];
 
           emoji.get = jest.fn(name => name);
           out.println = jest.fn();
-          profile.current = jest.fn().mockReturnValue(currentProfile);
+          profile.current = jest.fn().mockReturnValue({
+            commands: jest.fn().mockReturnValue(currentProfileCommands)
+          });
 
           help.execute();
         });
@@ -68,10 +70,10 @@ describe('help', () => {
       });
 
       describe('when there is help', () => {
-        let currentProfile;
+        let currentProfileCommands;
 
         beforeEach(() => {
-          currentProfile = [
+          currentProfileCommands = [
             {
               help: {
                 keys: 't',
@@ -82,7 +84,9 @@ describe('help', () => {
 
           emoji.get = jest.fn(name => name);
           out.println = jest.fn();
-          profile.current = jest.fn().mockReturnValue(currentProfile);
+          profile.current = jest.fn().mockReturnValue({
+            commands: jest.fn().mockReturnValue(currentProfileCommands)
+          });
 
           help.execute();
         });

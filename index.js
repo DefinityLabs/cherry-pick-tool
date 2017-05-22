@@ -42,14 +42,12 @@ process.stdin.on('keypress', function(ch, key) {
   executeKeyPressEvent(ch, key);
 });
 
-if (process.stdin.isTTY) {
-  process.stdin.setRawMode(true);
-}
-process.stdin.resume();
-
 clear();
 
-const defaultCommands = profile.get('default');
+const defaultProfile = profile.get('default');
+defaultProfile.setRawMode(true);
+
+const defaultCommands = defaultProfile.commands();
 defaultCommands.add(help);
 defaultCommands.add(clearConsole);
 defaultCommands.add(appendEmptyLineInConsole);
@@ -69,7 +67,10 @@ defaultCommands.add(clearCherryPickFile);
 defaultCommands.add(executeCherryPick);
 defaultCommands.add(quit);
 
-const cherryPickCommands = profile.get('cherryPick');
+const cherryPickProfile = profile.get('cherryPick');
+cherryPickProfile.setRawMode(true);
+
+const cherryPickCommands = cherryPickProfile.commands();
 cherryPickCommands.add(help);
 cherryPickCommands.add(appendEmptyLineInConsole);
 cherryPickCommands.add(abortCherryPick);
@@ -95,7 +96,7 @@ function executeKeyPressEvent(ch, key) {
     process.stdin.pause();
   }
 
-  profile.current().forEach(function(command) {
+  profile.current().commands().forEach(function(command) {
     if (command.canProcess(ch, key)) {
       command.execute();
     }
