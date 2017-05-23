@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/DefinityLabs/cherry-pick-tool.svg?branch=master)](https://travis-ci.org/DefinityLabs/cherry-pick-tool)
-
 [![Coverage Status](https://coveralls.io/repos/github/DefinityLabs/cherry-pick-tool/badge.svg?branch=master)](https://coveralls.io/github/DefinityLabs/cherry-pick-tool?branch=master)
 
 # 🍒 cherry-pick-tool
