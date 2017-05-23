@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/DefinityLabs/cherry-pick-tool.svg?branch=master)](https://travis-ci.org/DefinityLabs/cherry-pick-tool)
+
+[![Coverage Status](https://coveralls.io/repos/github/DefinityLabs/cherry-pick-tool/badge.svg?branch=master)](https://coveralls.io/github/DefinityLabs/cherry-pick-tool?branch=master)
+
 # 🍒 cherry-pick-tool
 
 Cherry pick is not a common practice, but sometimes we cannot avoid it. It's a painful process, first filtering the commits you want to cherry pick and them executing the merging with the current code.
